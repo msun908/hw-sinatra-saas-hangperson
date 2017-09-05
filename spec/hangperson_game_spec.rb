@@ -9,7 +9,7 @@ describe HangpersonGame do
     end
   end
 
-  describe 'new', :pending => true do
+  describe 'new' do
     it "takes a parameter and returns a HangpersonGame object" do      
       @hangpersonGame = HangpersonGame.new('glorp')
       expect(@hangpersonGame).to be_an_instance_of(HangpersonGame)
@@ -19,7 +19,7 @@ describe HangpersonGame do
     end
   end
 
-  describe 'guessing', :pending => true do
+  describe 'guessing' do
     context 'correctly' do
       before :each do
         @game = HangpersonGame.new('garply')
