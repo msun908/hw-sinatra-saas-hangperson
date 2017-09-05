@@ -24,6 +24,40 @@ class HangpersonGame
     }
   end
   
+  def guess(letters)
+    raise ArgumentError if letters == "" 
+    raise ArgumentError if letters !~ /[a-zA-Z]/
+    letters.downcase!
+      if  @word.include?(letters) 
+        if !@guesses.include?(letters)
+          @guesses << letters
+        else
+          return false
+        end
+      else
+        if !@wrong_guesses.include?(letters)
+          @wrong_guesses << letters
+        else
+          return false
+        end
+      end
+  end
   
+  def check_win_or_lose
+    if (@wrong_guesses.length == 7) 
+      :lose
+    elsif (!self.word_with_guesses.include?("-"))
+      :win
+    else
+      :play
+    end
+  end
+  
+  def word_with_guesses
+    guesses_list = @guesses.to_s
+    guesses_rx = /[^ #{guesses_list}]/
+    @masked = @word.gsub(guesses_rx, "-")
+    @masked.scan(/[a-z\-]/).join
+  end
 
 end
