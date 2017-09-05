@@ -25,8 +25,5 @@ class HangpersonGame
   end
   
   
-  def guess(letters)
-    
-  end
 
 end
